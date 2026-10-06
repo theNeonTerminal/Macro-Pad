@@ -13,12 +13,11 @@
 | Part | What it's for | Qty | Unit | Total | Vendor |
 | --- | --- | --- | --- | --- | --- |
 | [Professional PCB](https://jlcpcb.com) | PCB itself | 1 | $7.00 | $7.00 | [JLCPCB](https://jlcpcb.com) |
-| [Xiao Seeed studio ESP32 S3](https://robu.in/product/seeed-studio-xiao-esp32c6/) | Main MCU | 1 | $11.80 | $11.80 | [robu.in](https://robu.in/product/seeed-studio-xiao-esp32c6/) |
 | [Rotary Encoder](https://robu.in/product/hongyan-ec11h-7ce15p1zy15f7-rotary-encoder-with-push-button-switch-vertical-plug-in/) | For Volume knob and a few others | 1 | $0.60 | $0.60 | [robu.in](https://robu.in/product/hongyan-ec11h-7ce15p1zy15f7-rotary-encoder-with-push-button-switch-vertical-plug-in/) |
 | [OLED ssd1306](https://robu.in/product/0-96-inch-128x64-ssd1306-iic-interface-4-pin-oled-module-blue-color-screen/) | For display battery charge and other stats | 1 | $2.60 | $2.60 | [robu.in](https://robu.in/product/0-96-inch-128x64-ssd1306-iic-interface-4-pin-oled-module-blue-color-screen/) |
 | [Battery](https://robu.in/product/nova-604060-2000mah-3-7v-micro-lipo-battery-pack/) | When working Wirelessly | 1 | $3.40 | $3.40 | [robu.in](https://robu.in/product/nova-604060-2000mah-3-7v-micro-lipo-battery-pack/) |
-| **Parts subtotal** | — | — | — | **$25.40** | — |
+| **Parts subtotal** | — | — | — | **$13.60** | — |
 | **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$25.40** | — |
+| **Total** | — | — | — | **$13.60** | — |
 
-$4.60 left of the tier's funding.
+$16.40 left of the tier's funding.
