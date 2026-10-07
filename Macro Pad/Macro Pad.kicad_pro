@@ -245,8 +245,8 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.25,
-          "drill": 0.2
+          "diameter": 0.5,
+          "drill": 0.3
         }
       ],
       "zones_allow_external_fillets": false
@@ -679,7 +679,7 @@
         "uuid": "09e6d6cb-ab99-4d7a-8962-ceabe82c0aef"
       }
     ],
-    "used_designators": "OLED1,#PWR1-2,S1,SW1-12,SW43,U1-3",
+    "used_designators": "#FLG1-2,OLED1,#PWR1-2,S1,SW1-13,SW43,U1-3",
     "variants": []
   },
   "sheets": [
