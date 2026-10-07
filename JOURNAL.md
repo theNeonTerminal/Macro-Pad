@@ -64,5 +64,5 @@ Firmware also pending, can hopefully complete it by this week :D
 
 ![image](https://halflife.hackclub-assets.com/hackclub-half-life/sessions/Sg2YTK32CyhyRAQxm5AUnJ98fO1aU3hg/28b9761b07ada7d24f75ae3eaeb99cca983d8f846bfba5ae37bfad4407567048.png)
 
-PCB fully completed, resolved all DRC and ERC errors and warnings, added silkscreen texts, labels, fixed and issue with the switch on previous versions, and ground copper fill on both sides of the PCB.
+PCB fully completed, resolved all DRC, ERC errors and warnings, added silkscreen texts, labels, fixed and issue with the switch on previous versions, and ground copper fill on both sides of the PCB.
 Now I will start on the firmware part, it might take some time, but will be worth it
