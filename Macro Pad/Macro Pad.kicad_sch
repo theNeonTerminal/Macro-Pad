@@ -5573,7 +5573,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "85ad4fc1-432e-49cc-98ca-15104d4d488c")
-		(property "Reference" "OLED1"
+		(property "Reference" "OLED"
 			(at 73.914 105.918 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5775,7 +5775,7 @@
 		(instances
 			(project "Macro Pad"
 				(path "/09e6d6cb-ab99-4d7a-8962-ceabe82c0aef"
-					(reference "OLED1")
+					(reference "OLED")
 					(unit 1)
 				)
 			)
