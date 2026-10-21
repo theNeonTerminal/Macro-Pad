@@ -1,8 +1,6 @@
-<div align="center">
+# BLE Macro Pad
 
-# 🎛️ BLE Macro Pad
-
-### ESP32 wireless macro pad with 12 buttons, a rotary encoder, and an OLED
+### ESP32 wireless macro pad with 12 customizable buttons, a rotary encoder, and an OLED
 
 **12 configurable macro actions · Rotary volume control · OLED feedback · Bluetooth LE**
 
@@ -10,22 +8,18 @@
 
 *A small DIY shortcut pad for media controls and everyday keyboard macros.*
 
-</div>
-
 ---
 
 ## About
 
-This is a BLE macro pad built around an **ESP32**, a **128 × 64 SSD1306 OLED**, 12 pushbuttons, and a bare rotary encoder. The idea is simple: keep the shortcuts and media controls I use most on a small wireless device.
+An ESP32 based BLE Macro Pad I made as a project to experiment with BLE on the ESP32 and simulate keyboard/mouse (mouse not used here) actions wirelessly via BLE.
 
-Every macro has its own function (`b1()` through `b12()`), so changing a shortcut is straightforward.
+Each button on the pad has its own function dedicated to make any required action on the pc or the phone its connected to.
 
 > [!IMPORTANT]
-> **Arduino IDE ESP32 board package: version `2.0.17`.** Use **ESP32 by Espressif Systems v2.0.17** for this project. The current firmware does **not compile with newer core versions**.
->
-> The schematic shows the planned PCB connections. The firmware GPIO array still needs to be updated to match the board before flashing.
+> **Arduino IDE ESP32 board package: version `2.0.17`.** Use **ESP32 by Espressif Systems v2.0.17** for this project. The current firmware does **not compile with newer core versions** due to changes made to the Bluetooth API by Espressif.
 
-## 🖼️ Hardware Design
+## Hardware Design
 
 ### 01 / Circuit Schematic
 
@@ -33,7 +27,7 @@ Every macro has its own function (`b1()` through `b12()`), so changing a shortcu
 
 ![Circuit schematic](./schematic.png)
 
-*Electrical connections between the ESP32, buttons, OLED, and rotary encoder.*
+*The actual circuit diagram followed for connection, KiCad available in repo*
 
 </div>
 
@@ -57,26 +51,25 @@ Every macro has its own function (`b1()` through `b12()`), so changing a shortcu
 
 </div>
 
-## 🚀 Features
+## Currently Implemented Features
 
-- **Bluetooth LE keyboard:** Send keyboard shortcuts and media-control commands wirelessly.
+- **Bluetooth LE keyboard:** Send keystrokes wirelessly, while also consuming very amount of battery.
 - **Customizable macros:** Dedicated `b1()`–`b12()` functions make actions easy to edit.
-- **Rotary encoder:** Turn to adjust system volume up or down.
-- **OLED feedback:** Show the last triggered action on a 128 × 64 monochrome display.
-- **Press-and-hold repeat:** Configurable repeat interval for assigned button inputs (currently 300 ms).
-- **Expandable firmware:** Reserve unused macros for application shortcuts, home automation, or future ESP-NOW integrations.
+- **Rotary encoder:** To adjust connected system volume.
+- **OLED feedback:** Show the last triggered action on a 128x64 I2C OLED Display - can be customized to show animations, gifs (in monochrome) and really anything.
+- **Expandable firmware:** Some of the buttons remains unused as of today, so it allows it to have some space for more fucntionality.
 
 ## 🧩 Components
 
 | Component | Purpose |
 | --- | --- |
 | ESP32 development board | Main controller + BLE |
-| SSD1306 OLED, 128 × 64, I²C | On-device feedback |
+| SSD1306 OLED, 128 × 64, I²C | Display Various Stats or really anything |
 | Bare EC11-style rotary encoder | Volume control |
-| Momentary pushbuttons | Custom macros (up to 12 planned) |
+| Mechanical Switch pushbuttons | Custom macros (up to 12 planned) |
 | Custom PCB | Final electrical assembly |
 
-## 🎮 Button Layout
+## Button Layout
 
 The schematic uses 12 independent pushbuttons. Each button connects between its GPIO and GND and is read with `INPUT_PULLUP`.
 
@@ -97,56 +90,6 @@ The schematic uses 12 independent pushbuttons. Each button connects between its 
 
 **Other connections:** The OLED uses I²C; the rotary encoder is intended for volume control. Refer to the schematic for their PCB connections.
 
-> [!NOTE]
-> These GPIOs are taken from the **PCB schematic**, not the prototype firmware's older `buttons[]` array. Update that array before flashing. GPIO 34–39 are input-only and don't have internal pull-ups on the ESP32, so buttons on GPIO 34, 35, 36 and 39 will need **external pull-up resistors**. Double-check the final netlist before ordering the board.
+## Firmware Working
 
-## 🛠️ Firmware Setup
-
-1. In Arduino IDE Boards Manager, install **ESP32 by Espressif Systems — `2.0.17`**. Do not upgrade the board package for this firmware; newer versions do not compile it.
-2. Install these libraries:
-   - `BleKeyboard` (ESP32 BLE Keyboard)
-   - `Adafruit GFX Library`
-   - `Adafruit SSD1306`
-   - `Wire` (included with the ESP32 Arduino core)
-3. Open the project sketch and select the correct ESP32 board and port.
-4. Update the sketch GPIO assignments to match the schematic, and confirm the OLED I²C address (`0x3C`).
-5. Upload the sketch, then pair the device named **BLE Macro PAD** with a BLE-capable host.
-
-> [!CAUTION]
-> The hardware and firmware have not yet been tested together on the finished PCB. Check the schematic, power connections and encoder direction before regular use.
-
-## 🧠 Customizing Macros
-
-Each button has a small dedicated function. For example:
-
-```cpp
-void b6() { bleKeyboard.write(KEY_MEDIA_NEXT_TRACK); printAction("NEXT TRACK"); }
-```
-
-To change a macro, edit the corresponding `bN()` function. `printAction()` sends a message to both the Serial Monitor and the OLED.
-
-For the encoder, customize:
-
-```cpp
-void encoderClockwise() {
-  bleKeyboard.write(KEY_MEDIA_VOLUME_UP);
-  printAction("VOLUME UP");
-}
-
-void encoderCounterClockwise() {
-  bleKeyboard.write(KEY_MEDIA_VOLUME_DOWN);
-  printAction("VOLUME DOWN");
-}
-```
-
-## Notes
-
-This is a work in progress. Once the PCB is assembled, I’ll update the pin mapping and add photos and test results.
-
----
-
-<div align="center">
-
-Built with ESP32 and Arduino C++.
-
-</div>
+This code uses the <a href="https://github.com/T-vK/ESP32-BLE-Keyboard">BLEKeyboard</a> libray - detects button presses with a function that I found online, the function returns `true` immediately when a button is pressed and periodically sends `true` (300ms) if the button is not released at all, very helpful function, cant really tell how it works, but it works great and is fully non-blocking. The main code starts only the BLEKeyboard is connected to a device (name, manufaturer and charge can be configured the object instance outside and above the setup function), the code simply checks for button presses (form the switch case part) and calls the button function associated with the button and same with rotary encoder - checks the reading, manages an internal counter and send BLE signal
