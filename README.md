@@ -27,8 +27,6 @@ Each button on the pad has its own function dedicated to make any required actio
 
 ![Circuit schematic](./schematic.png)
 
-*The actual circuit diagram followed for connection, KiCad available in repo*
-
 </div>
 
 ### 02 / PCB Layout
@@ -36,8 +34,6 @@ Each button on the pad has its own function dedicated to make any required actio
 <div align="center">
 
 ![PCB layout](./footprint.png)
-
-*Board routing, component placement, and copper traces.*
 
 </div>
 
@@ -47,27 +43,33 @@ Each button on the pad has its own function dedicated to make any required actio
 
 ![3D PCB view](./3d.png)
 
-*Preview of the assembled board before fabrication.*
-
 </div>
 
 ## Currently Implemented Features
 
 - **Bluetooth LE keyboard:** Send keystrokes wirelessly, while also consuming very amount of battery.
-- **Customizable macros:** Dedicated `b1()`–`b12()` functions make actions easy to edit.
+- **Customizable macros:** Dedicated `b1()`–`b12()` functions make actions easy to edit and customize to ones needs and wishes
 - **Rotary encoder:** To adjust connected system volume.
 - **OLED feedback:** Show the last triggered action on a 128x64 I2C OLED Display - can be customized to show animations, gifs (in monochrome) and really anything.
-- **Expandable firmware:** Some of the buttons remains unused as of today, so it allows it to have some space for more fucntionality.
+- **Expandable firmware:** Some of the buttons remains unused as of today, so it allows it to have some space for more functionality.
 
-## 🧩 Components
+---
 
-| Component | Purpose |
-| --- | --- |
-| ESP32 development board | Main controller + BLE |
-| SSD1306 OLED, 128 × 64, I²C | Display Various Stats or really anything |
-| Bare EC11-style rotary encoder | Volume control |
-| Mechanical Switch pushbuttons | Custom macros (up to 12 planned) |
-| Custom PCB | Final electrical assembly |
+## BoM (Bill of Materials)
+
+| PART | QUANTITY | PURPOSE |
+| ----- | --- | ---- |
+| ESP32 | 1 | Main BLE control unit and processing unit |
+| OLED Display | 1 | Dsiplay currently transmited signal or any other stat (customizable) |
+| Rotary Encoder | 1 | To adjust volume of the connected device |
+| Mechanical Switches | 12 | The actual input for the macros itself |
+| Mechanical Switch Keycaps | 12 | To put on the mechanical switches |
+| PCB | 1 | To house and connect all electronics |
+| TP4056 Charging Module | 1 | To charge the onboard battery |
+| Battery (Li-Ion any mAh) | 1 | To Power the system |
+| Slide switch | 1 | To turn the system on or off |
+
+---
 
 ## Button Layout
 
